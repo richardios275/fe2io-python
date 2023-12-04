@@ -1,0 +1,10 @@
+- Fix player from freezing when playing audio
+- Volume adjustment
+- Temp download for sync
+- Volume reduction on death
+- Window tray thing (idk how to do that with Qt yet)
+- Save username for next launch
+- Autoconnect when argument --autoconnect used (good for shortcuts)
+- UI Customizability (Themes and stuff)
+- Discord integration (idk why but ok)
+- SOMEHOW play the music on Spotify????
