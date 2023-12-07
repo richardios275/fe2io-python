@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>429</width>
-    <height>221</height>
+    <width>430</width>
+    <height>260</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,9 @@
      <width>331</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="connect_button">
@@ -65,10 +68,10 @@
   <widget class="QGroupBox" name="option_gb">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>109</y>
+     <x>10</x>
+     <y>110</y>
      <width>411</width>
-     <height>141</height>
+     <height>140</height>
     </rect>
    </property>
    <property name="title">
@@ -79,20 +82,23 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>201</width>
+      <width>181</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>Quieten on Death</string>
     </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QSlider" name="volume_slider">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>80</y>
-      <width>161</width>
+      <x>10</x>
+      <y>100</y>
+      <width>401</width>
       <height>22</height>
      </rect>
     </property>
@@ -109,14 +115,30 @@
    <widget class="QLabel" name="volume_label">
     <property name="geometry">
      <rect>
-      <x>6</x>
-      <y>53</y>
+      <x>10</x>
+      <y>80</y>
       <width>141</width>
-      <height>21</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
      <string>Volume: 70%</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="fade_box">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fade In / Out</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
