@@ -50,7 +50,11 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
         # Set UI according to arguments
         self.lineEdit.setText(args.username)
         self.volume_label.setText(f"Volume: {args.volume}%")
-        self.volume_slider.setValue(int(args.volume))
+        self.volume_slider.setValue(args.volume)
+
+        # Automatically connect if --auto-connect argument is used
+        if args.auto_connect == True:
+            self.on_connect_button_clicked()
 
         # Connect the UI's to signals
         self.connect_button.clicked.connect(self.on_connect_button_clicked)
@@ -93,10 +97,12 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
 def main():
     global args
     parser = argparse.ArgumentParser(description="Print the username if provided as an argument.")
-    parser.add_argument('-u', '--username', help='Set username on startup')
-    parser.add_argument('-v', '--volume', help='Specify volume on startup (0 - 100)')
+    parser.add_argument('-u', '--username', help='Set username on startup.', default='')
+    parser.add_argument('-v', '--volume', help='Specify volume on startup. (0 - 100)', default=70, type=int)
+    parser.add_argument('--auto-connect', help='Automatically connect to fe2.io on launch.', action='store_true')
 
     args = parser.parse_args()
+    print(args)
 
     if args.username:
         print(args.username)

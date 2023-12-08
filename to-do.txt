@@ -1,6 +1,6 @@
 - Fix player from freezing when playing audio
-- Volume adjustment
 - Temp download for sync
+- Sync when music still downloading
 - Volume reduction on death
 - Window tray thing (idk how to do that with Qt yet)
 - Save username for next launch
