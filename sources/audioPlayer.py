@@ -1,5 +1,6 @@
 import requests
 import pygame
+from datetime import datetime
 from pygame import mixer_music
 from urllib.parse import urlparse
 
@@ -9,6 +10,8 @@ fadein = True
 
 audio_cache = {}
 filename = ""
+
+VERY_BIG_NUMBER = 2147483647
 
 def toggle_death_volume(value):
     global deathVolume
@@ -42,8 +45,16 @@ def get_file_extension(url):
     return extension
 
 def set_audio(url):
-    toggle_death_volume(False)
+    #Variables
+    current_time = datetime.now()
+    download_failed = False
 
+    # Stop current audio from playing
+    mixer_music.unload()
+    mixer_music.stop()
+
+    toggle_death_volume(False)
+    
     # Load audio from cache if available, download if not.
     if url in audio_cache:
         filename = audio_cache[url]
@@ -63,12 +74,16 @@ def set_audio(url):
                 f.write(response.content)
 
             # Save audio to cache
-            audio_cache[url] = filename
+            audio_cache[url] = filename 
         except requests.exceptions.RequestException as e:
+            download_failed = True
             print(f"Error: {e}")
 
-    mixer_music.load(filename)
-    mixer_music.play(2, 0.00, 1000)
+    #Play music
+    if download_failed != True:
+        elapsed_time = int((datetime.now() - current_time).total_seconds())
+        mixer_music.load(filename)
+        mixer_music.play(VERY_BIG_NUMBER, elapsed_time, 1000)    
 
-pygame.init()
+pygame.mixer.init()
 set_volume(volume)
