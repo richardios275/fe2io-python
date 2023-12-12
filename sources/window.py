@@ -58,5 +58,5 @@ class Ui_MainWindow(object):
         self.status_label.setText(_translate("MainWindow", "Status: Disconnected"))
         self.option_gb.setTitle(_translate("MainWindow", "Options"))
         self.quieten_box.setText(_translate("MainWindow", "Quieten on Death"))
-        self.volume_label.setText(_translate("MainWindow", "Volume: 70%"))
+        self.volume_label.setText(_translate("MainWindow", "Volume: %1%"))
         self.fade_box.setText(_translate("MainWindow", "Fade In / Out"))
