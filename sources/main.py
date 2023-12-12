@@ -21,7 +21,7 @@ async def connect_ws(username, status_label):
         await websocket.send(message_to_send)
         print(f"Sent message: {message_to_send}")
 
-        status_label.setText("Connected as: " + username)
+        status_label.setText("Status: Connected as " + username)
 
         while True:
             # Receive messages continuously
