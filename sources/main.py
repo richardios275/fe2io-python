@@ -1,3 +1,6 @@
+# Copyright 2023 Sheila Abigaile
+# See the full text of the Apache License 2.0 in the LICENSE file at the root of this project.
+
 import sys
 import argparse
 from PyQt6 import QtCore, QtGui, QtWidgets
