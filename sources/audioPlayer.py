@@ -1,9 +1,10 @@
 # Copyright 2023 Sheila Abigaile (Legal Name: Abraham Richard Sunjaya)
 # See the full text of the Apache License 2.0 in the LICENSE file at the root of this project.
 
+import time
 import requests
 import pygame
-from datetime import datetime
+from datetime import datetime, timezone
 from pygame import mixer_music
 from urllib.parse import urlparse
 
@@ -16,10 +17,13 @@ filename = ""
 
 VERY_BIG_NUMBER = 2147483647
 
-def toggle_death_volume(value):
+def toggle_death_volume(enum):
     global deathVolume
-    deathVolume = value
-    set_volume(volume)
+    if enum == 1:
+        deathVolume = True
+        set_volume(volume)
+    elif enum == 2:
+        mixer_music.stop()
 
 def toggle_fadein(value):
     global fadein
@@ -47,7 +51,7 @@ def get_file_extension(url):
     extension = actual_file_name.split('.')[-1]
     return extension
 
-def set_audio(url):
+def set_audio(url, utc_time):
     #Variables
     current_time = datetime.now()
     download_failed = False
@@ -83,8 +87,9 @@ def set_audio(url):
             print(f"Error: {e}")
 
     #Play music
+    #If utc_time is present, then it'll wait until utc_time 
     if download_failed != True:
-        elapsed_time = int((datetime.now() - current_time).total_seconds())
+        elapsed_time = (datetime.now() - current_time).total_seconds()
         mixer_music.load(filename)
         mixer_music.play(VERY_BIG_NUMBER, elapsed_time, 1000)    
 
