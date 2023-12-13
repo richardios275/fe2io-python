@@ -5,33 +5,28 @@
     <name>MainWindow</name>
     <message>
       <location filename="..\MainUI.ui" line="0" />
-      <source>FE2IO Python</source>
-      <translation type="unfinished" />
-    </message>
-    <message>
-      <location filename="..\MainUI.ui" line="0" />
       <source>Please Enter your Roblox Username:</source>
-      <translation>Roblox ユーザー名を入力してください:</translation>
+      <translation>Robloxのユーザー名を入力してください:</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Connect</source>
-      <translation>接続する</translation>
+      <translation>接続</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Status: Connected as %1</source>
-      <translation>状態: %1 として接続済み</translation>
+      <translation>ステータス: 接続済み (%1で接続)</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Status: Connecting</source>
-      <translation>状態: 接続中</translation>
+      <translation>ステータス: 接続中</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Status: Disconnected</source>
-      <translation>状態: 切断</translation>
+      <translation>ステータス: 切断済み</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
@@ -40,8 +35,28 @@
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
-      <source>Quieten on Death</source>
-      <translation>死んだら静かになる</translation>
+      <source>On Death</source>
+      <translation>死亡時</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Leaving Game</source>
+      <translation>ゲームを離れる</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Quieten</source>
+      <translation>静かにする</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Stop</source>
+      <translation>停止</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Nothing</source>
+      <translation>何もしない</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
@@ -51,7 +66,7 @@
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Fade In / Out</source>
-      <translation>フェードイン/アウト</translation>
-   </message>
+      <translation>フェードイン / アウト</translation>
+    </message>
   </context>
 </TS>

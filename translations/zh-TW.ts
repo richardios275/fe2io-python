@@ -5,13 +5,8 @@
     <name>MainWindow</name>
     <message>
       <location filename="..\MainUI.ui" line="0" />
-      <source>FE2IO Python</source>
-      <translation type="unfinished" />
-    </message>
-    <message>
-      <location filename="..\MainUI.ui" line="0" />
       <source>Please Enter your Roblox Username:</source>
-      <translation>請輸入您的Roblox用戶名：</translation>
+      <translation>請輸入您的Roblox用戶名:</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
@@ -21,17 +16,17 @@
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Status: Connected as %1</source>
-      <translation>狀態：已連接，使用者名稱：%1</translation>
+      <translation>狀態: 已連接為 %1</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Status: Connecting</source>
-      <translation>狀態：連接中</translation>
+      <translation>狀態: 連接中</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Status: Disconnected</source>
-      <translation>狀態：未連接</translation>
+      <translation>狀態: 已斷開</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
@@ -40,18 +35,38 @@
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
-      <source>Quieten on Death</source>
-      <translation>死亡時靜音</translation>
+      <source>On Death</source>
+      <translation>死亡時</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Leaving Game</source>
+      <translation>離開遊戲</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Quieten</source>
+      <translation>靜音</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Stop</source>
+      <translation>停止</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Nothing</source>
+      <translation>無操作</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Volume: %1%</source>
-      <translation>音量：%1%</translation>
+      <translation>音量: %1%</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Fade In / Out</source>
-      <translation type="unfinished" />
+      <translation>淡入 / 淡出</translation>
     </message>
   </context>
 </TS>

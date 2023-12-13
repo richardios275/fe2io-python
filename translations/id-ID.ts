@@ -5,11 +5,6 @@
     <name>MainWindow</name>
     <message>
       <location filename="..\MainUI.ui" line="0" />
-      <source>FE2IO Python</source>
-      <translation type="unfinished" />
-    </message>
-    <message>
-      <location filename="..\MainUI.ui" line="0" />
       <source>Please Enter your Roblox Username:</source>
       <translation>Silahkan masukan username Roblox anda:</translation>
     </message>
@@ -40,8 +35,28 @@
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
-      <source>Quieten on Death</source>
-      <translation>Bisikan saat mati</translation>
+      <source>On Death</source>
+      <translation>Saat Mati</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Leaving Game</source>
+      <translation>Meninggalkan Game</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Quieten</source>
+      <translation>Bisikan</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Stop</source>
+      <translation>Hentikan</translation>
+    </message>
+    <message>
+      <location filename="..\MainUI.ui" line="0" />
+      <source>Nothing</source>
+      <translation>Tidak melakukan apa-apa</translation>
     </message>
     <message>
       <location filename="..\MainUI.ui" line="0" />
@@ -51,7 +66,7 @@
     <message>
       <location filename="..\MainUI.ui" line="0" />
       <source>Fade In / Out</source>
-      <translation type="unfinished" />
+      <translation>Fade In / Out</translation>
     </message>
   </context>
 </TS>
