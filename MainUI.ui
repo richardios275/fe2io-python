@@ -7,11 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>430</width>
-    <height>260</height>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>FE2IO Python</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -69,37 +72,21 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>110</y>
+     <y>100</y>
      <width>411</width>
-     <height>140</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="title">
     <string>Options</string>
    </property>
-   <widget class="QCheckBox" name="quieten_box">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Quieten on Death</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QSlider" name="volume_slider">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
-      <width>401</width>
-      <height>22</height>
+      <y>41</y>
+      <width>391</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="maximum">
@@ -116,8 +103,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
-      <width>141</width>
+      <y>21</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -129,9 +116,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
-      <width>181</width>
-      <height>20</height>
+      <y>189</y>
+      <width>91</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="text">
@@ -141,6 +128,123 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QGroupBox" name="death_gb">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>69</y>
+      <width>391</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>On Death</string>
+    </property>
+    <widget class="QRadioButton" name="death_quiten">
+     <property name="geometry">
+      <rect>
+       <x>8</x>
+       <y>20</y>
+       <width>61</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Quieten</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="death_stop">
+     <property name="geometry">
+      <rect>
+       <x>77</x>
+       <y>20</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Stop</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="death_nothing">
+     <property name="geometry">
+      <rect>
+       <x>127</x>
+       <y>20</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nothing</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="leave_gb">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>391</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Leaving Game</string>
+    </property>
+    <widget class="QRadioButton" name="leave_stop">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>20</y>
+       <width>51</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Stop</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="leave_nothing">
+     <property name="geometry">
+      <rect>
+       <x>57</x>
+       <y>20</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nothing</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QComboBox" name="server_box">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>65</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>FE2.io</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>LB's io</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>
