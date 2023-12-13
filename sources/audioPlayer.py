@@ -1,4 +1,4 @@
-# Copyright 2023 Sheila Abigaile
+# Copyright 2023 Sheila Abigaile (Legal Name: Abraham Richard Sunjaya)
 # See the full text of the Apache License 2.0 in the LICENSE file at the root of this project.
 
 import requests
