@@ -51,7 +51,7 @@ def get_file_extension(url):
     extension = actual_file_name.split('.')[-1]
     return extension
 
-def set_audio(url, utc_time):
+def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3', utc_time=datetime.utcnow()):
     #Variables
     current_time = datetime.now()
     download_failed = False
@@ -67,8 +67,6 @@ def set_audio(url, utc_time):
         filename = audio_cache[url]
     else:
         try:
-            if url == None:
-                url = 'https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3'
             # Download the audio file
             response = requests.get(url)
             response.raise_for_status()
@@ -85,6 +83,7 @@ def set_audio(url, utc_time):
         except requests.exceptions.RequestException as e:
             download_failed = True
             print(f"Error: {e}")
+            set_audio()
 
     #Play music
     #If utc_time is present, then it'll wait until utc_time 
