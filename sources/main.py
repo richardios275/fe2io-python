@@ -40,8 +40,7 @@ async def connect_ws(username, uri_option, status_label):
                             set_audio(data['audioUrl'])
                         if data['msgType'] == 'gameStatus' and data['statusType'] == 'died':
                             print('Player dead')
-                            if death_volume_reduction == True:
-                                toggle_death_volume(True)
+                            toggle_death_volume(on_death)
                 except json.JSONDecodeError:
                     pass
         elif uri_option == 1:
