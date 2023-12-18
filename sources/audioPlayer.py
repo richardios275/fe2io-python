@@ -90,7 +90,7 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
     if download_failed != True:
         elapsed_time = (datetime.now() - current_time).total_seconds()
         mixer_music.load(filename)
-        mixer_music.play(VERY_BIG_NUMBER, elapsed_time, 1000)    
+        mixer_music.play(VERY_BIG_NUMBER, elapsed_time, 1000 if fadein else 0)    
 
 pygame.mixer.init()
 set_volume(volume)
