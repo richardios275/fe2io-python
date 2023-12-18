@@ -77,7 +77,7 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
         self.lineEdit.setText(args.username)
         self.volume_label.setText(f"Volume: {args.volume}%")
         self.volume_slider.setValue(args.volume)
-        
+        set_volume(args.volume)
 
         # Automatically connect if --auto-connect argument is used
         if len(args.auto_connect) > 0:
