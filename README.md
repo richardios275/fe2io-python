@@ -18,7 +18,7 @@ Download the latest release from the [Releases]() page.
     ```
     Activate the virtual environment:
 
-        On Windows:
+    On Windows:
 
     ```ps1
     .\venv\Scripts\activate
