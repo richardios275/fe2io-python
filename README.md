@@ -5,7 +5,7 @@
 
 ### Windows
 
-Download the latest release from the [Releases]() page.
+Download the latest release from the [Releases](https://github.com/richardios275/fe2io-python/releases) page.
 
 ### Other Platforms
 
