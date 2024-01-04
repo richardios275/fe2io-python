@@ -78,4 +78,4 @@ Feel free to open an issue or pull request for any other improvements or feature
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 This project is not endorsed, nor is it affiliated with Crazyblox Ltd. FE2.io and its logo are copyright of Crazyblox Ltd
-(C) Crazyblox Ltd 2023
+(C) Crazyblox Ltd 2024
