@@ -117,8 +117,7 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
             mixer_music.play(VERY_BIG_NUMBER, elapsed_time, 1000 if fadein else 0)    
         else:
             current_start_utc_time = datetime.utcnow().timestamp()
-            print(utc_time, current_start_utc_time)
-            playing_time = utc_time - current_start_utc_time
+            playing_time = (utc_time - current_start_utc_time) / 1000
             mixer_music.play(VERY_BIG_NUMBER, playing_time, 1000 if fadein else 0)  
 
 pygame.mixer.init()
