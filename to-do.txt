@@ -1,6 +1,4 @@
-- Fix player from freezing when playing audio
-- Temp download for sync
-- Window tray thing (idk how to do that with Qt yet)
-- UI Customizability (Themes and stuff)
 - Discord integration (idk why but ok)
-- Obby Creator io
+- Fixing Translations
+- App theming
+- Obby Creator io (why)
