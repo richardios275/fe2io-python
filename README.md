@@ -47,7 +47,7 @@ python sources/main.py
 
 We welcome contributions to enhance fe2io-python. Here are some ways you can contribute:
 
--The code ofc
+-The code ofc (good luck fixing my spaghetti code LOL)
 
 -Report Issues
 
@@ -63,7 +63,7 @@ pyqt6-tools designer
 ```
 
 
-Translations
+Translations (currently broken lol)
 
     Find the locales directory.
     Duplicate the existing language file (e.g., en_US.json) and translate the strings.
@@ -77,4 +77,5 @@ Feel free to open an issue or pull request for any other improvements or feature
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+This project is not endorsed, nor is it affiliated with Crazyblox Ltd. FE2.io and its logo are copyright of Crazyblox Ltd
 (C) Crazyblox Ltd 2023
