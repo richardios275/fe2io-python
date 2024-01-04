@@ -1,6 +1,7 @@
 # Copyright 2023 Sheila Abigaile (Legal Name: Abraham Richard Sunjaya)
 # See the full text of the Apache License 2.0 in the LICENSE file at the root of this project.
 
+import os
 import sys
 import argparse
 from PyQt6 import QtCore, QtGui, QtWidgets
@@ -16,8 +17,13 @@ args = None
 debounce = False
 on_death = 1 # 0 = Nothing, 1 = Quieten, 2 = Stop
 on_leave = 1 # 0 = Nothing, 1 = Stop
+program_files = 'fe2io_files'
 urls = {0: "ws://client.fe2.io:8081", 1: "wss://liquid-breakout-bot.onrender.com/socket/websocket"}
 icon_links = {0: "http://cdn.discordapp.com/attachments/1060689121116426302/1060699627529175130/FE2IO_Logo.png", 1: "https://liquidbreakout.com/ioClient/assets/WebBasedAudioPlayerLogo.png"}
+
+# Create program folder if it doesn't exist
+if not os.path.exists(program_files):
+    os.makedirs(program_files)
 
 # Handle Websocket
 async def connect_ws(username, uri_option, status_label):
@@ -129,16 +135,32 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
 
     # UI Functions
     def load_pixmap(self, url):
-        response = requests.get(url)
-        if response.status_code == 200:
-            pixmap = QtGui.QPixmap()
-            pixmap.loadFromData(response.content)
+        # Extract the filename from the URL
+        file_name = os.path.join("fe2io_files", os.path.basename(url))
 
-            # Scale the image
-            scaled_pixmap = pixmap.scaled(self.iconLabel.size(), QtCore.Qt.AspectRatioMode.KeepAspectRatio)
+        # Check if the file already exists
+        if os.path.exists(file_name):
+            # Load the image from the local file
+            pixmap = QtGui.QPixmap(file_name)
+        else:
+            # File doesn't exist, download and save it
+            response = requests.get(url)
+            if response.status_code == 200:
+                with open(file_name, "wb") as f:
+                    f.write(response.content)
 
-            # Set the image
-            self.iconLabel.setPixmap(scaled_pixmap)
+                # Load the image from the local file
+                pixmap = QtGui.QPixmap(file_name)
+            else:
+                # Handle the case when the download fails
+                print(f"Failed to download image from {url}")
+                return  # Stop further processing if the download fails
+
+        # Scale the image
+        scaled_pixmap = pixmap.scaled(self.iconLabel.size(), QtCore.Qt.AspectRatioMode.KeepAspectRatio)
+
+        # Set the image
+        self.iconLabel.setPixmap(scaled_pixmap)
 
 
     def on_connect_button_clicked(self):

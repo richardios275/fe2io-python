@@ -20,19 +20,13 @@ filename = ""
 audio_folder = "fe2io_files"
 cache_file = os.path.join(audio_folder, "audio_cache.json")
 
-# Create audio folder
-if not os.path.exists(audio_folder):
-    os.makedirs(audio_folder)
-else:
-    # Load audio cache from the JSON file if it exists, otherwise create an empty dictionary
-    try:
-        with open(cache_file, "r") as json_file:
-            audio_cache = json.load(json_file)
-    except FileNotFoundError:
-        audio_cache = {}
-
-
-
+# Load audio cache from the JSON file if it exists, otherwise create an empty dictionary
+try:
+    with open(cache_file, "r") as json_file:
+        audio_cache = json.load(json_file)
+except FileNotFoundError:
+    audio_cache = {}
+        
 def toggle_death_volume(enum):
     global deathVolume
     if enum == 1:
@@ -70,7 +64,7 @@ def get_file_extension(url):
     extension = actual_file_name.split('.')[-1]
     return extension
 
-def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3', utc_time=datetime.utcnow()):
+def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3', utc_time=0):
     #Variables
     current_time = datetime.now()
     download_failed = False
@@ -81,6 +75,10 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
 
     toggle_death_volume(False)
     
+    # Fix error if URL is empty
+    if len(url) < 1:
+        url = 'https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3'
+
     # Load audio from cache if available, download if not.
     if url in audio_cache:
         filename = audio_cache[url]
@@ -92,13 +90,18 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
 
             # Get the file extension of the audio
             ext = get_file_extension(url)
-            filename = f"{len(audio_cache)}.{ext}"
+            filename = os.path.join(audio_folder, f"{len(audio_cache)}.{ext}")
                 
             with open(filename, "wb") as f:
                 f.write(response.content)
-
+            
             # Save audio to cache
             audio_cache[url] = filename 
+
+            # Update json file
+            with open(cache_file, "w") as json_file:
+                json.dump(audio_cache, json_file)
+
         except requests.exceptions.RequestException as e:
             download_failed = True
             print(f"Error: {e}")
@@ -107,9 +110,16 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
     #Play music
     #If utc_time is present, then it'll wait until utc_time 
     if download_failed != True:
-        elapsed_time = (datetime.now() - current_time).total_seconds()
         mixer_music.load(filename)
-        mixer_music.play(VERY_BIG_NUMBER, elapsed_time, 1000 if fadein else 0)    
+
+        if utc_time == 0:
+            elapsed_time = (datetime.now() - current_time).total_seconds()
+            mixer_music.play(VERY_BIG_NUMBER, elapsed_time, 1000 if fadein else 0)    
+        else:
+            current_start_utc_time = datetime.utcnow().timestamp()
+            print(utc_time, current_start_utc_time)
+            playing_time = utc_time - current_start_utc_time
+            mixer_music.play(VERY_BIG_NUMBER, playing_time, 1000 if fadein else 0)  
 
 pygame.mixer.init()
 set_volume(volume)
