@@ -1,21 +1,37 @@
-# Copyright 2023 Sheila Abigaile (Legal Name: Abraham Richard Sunjaya)
-# See the full text of the Apache License 2.0 in the LICENSE file at the root of this project.
-
-import time
+import os
+import json
 import requests
 import pygame
 from datetime import datetime, timezone
 from pygame import mixer_music
 from urllib.parse import urlparse
 
+# Constants
+VERY_BIG_NUMBER = 2147483647
+
+# Options
 volume = 70
 deathVolume = False
 fadein = True
 
+# Audio Stuff
 audio_cache = {}
 filename = ""
+audio_folder = "fe2io_files"
+cache_file = os.path.join(audio_folder, "audio_cache.json")
 
-VERY_BIG_NUMBER = 2147483647
+# Create audio folder
+if not os.path.exists(audio_folder):
+    os.makedirs(audio_folder)
+else:
+    # Load audio cache from the JSON file if it exists, otherwise create an empty dictionary
+    try:
+        with open(cache_file, "r") as json_file:
+            audio_cache = json.load(json_file)
+    except FileNotFoundError:
+        audio_cache = {}
+
+
 
 def toggle_death_volume(enum):
     global deathVolume
@@ -24,6 +40,9 @@ def toggle_death_volume(enum):
         set_volume(volume)
     elif enum == 2:
         mixer_music.stop()
+
+def toggle_leave():
+    mixer_music.stop()
 
 def toggle_fadein(value):
     global fadein

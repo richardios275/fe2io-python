@@ -6,9 +6,10 @@ import argparse
 from PyQt6 import QtCore, QtGui, QtWidgets
 import asyncio
 import websockets
+import requests
 import json
 from ui.MainUI_ui import Ui_MainWindow
-from audioPlayer import set_audio, set_volume, toggle_death_volume, toggle_fadein
+from audioPlayer import set_audio, set_volume, toggle_death_volume, toggle_leave, toggle_fadein
 
 # Variables
 args = None
@@ -16,6 +17,7 @@ debounce = False
 on_death = 1 # 0 = Nothing, 1 = Quieten, 2 = Stop
 on_leave = 1 # 0 = Nothing, 1 = Stop
 urls = {0: "ws://client.fe2.io:8081", 1: "wss://liquid-breakout-bot.onrender.com/socket/websocket"}
+icon_links = {0: "http://cdn.discordapp.com/attachments/1060689121116426302/1060699627529175130/FE2IO_Logo.png", 1: "https://liquidbreakout.com/ioClient/assets/WebBasedAudioPlayerLogo.png"}
 
 # Handle Websocket
 async def connect_ws(username, uri_option, status_label):
@@ -38,9 +40,12 @@ async def connect_ws(username, uri_option, status_label):
                     if 'msgType' in data:
                         if data['msgType'] == 'bgm':
                             set_audio(data['audioUrl'])
-                        if data['msgType'] == 'gameStatus' and data['statusType'] == 'died':
-                            print('Player dead')
-                            toggle_death_volume(on_death)
+                        if data['msgType'] == 'gameStatus':
+                            if data['statusType'] == 'died':
+                                toggle_death_volume(on_death)
+                            elif data['statusType'] == 'left':
+                                if on_leave == 1:
+                                    toggle_leave()
                 except json.JSONDecodeError:
                     pass
         elif uri_option == 1:
@@ -72,6 +77,12 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        # Set Window to fixed
+        self.setFixedSize(self.size())
+
+        # Load image at the top
+        self.load_pixmap(icon_links[0])
 
         # Set UI according to arguments
         self.lineEdit.setText(args.username)
@@ -105,6 +116,7 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
 
         self.leave_stop.toggled.connect(self.on_death_radio_button_toggled)
         self.leave_nothing.toggled.connect(self.on_death_radio_button_toggled)
+        self.server_box.currentIndexChanged.connect(self.on_server_box_index_changed)
         
         # Timer to periodically run the event loop
         self.timer = QtCore.QTimer(self)
@@ -116,6 +128,19 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
         asyncio.get_event_loop().run_until_complete(asyncio.sleep(0))
 
     # UI Functions
+    def load_pixmap(self, url):
+        response = requests.get(url)
+        if response.status_code == 200:
+            pixmap = QtGui.QPixmap()
+            pixmap.loadFromData(response.content)
+
+            # Scale the image
+            scaled_pixmap = pixmap.scaled(self.iconLabel.size(), QtCore.Qt.AspectRatioMode.KeepAspectRatio)
+
+            # Set the image
+            self.iconLabel.setPixmap(scaled_pixmap)
+
+
     def on_connect_button_clicked(self):
         global debounce
         if debounce == False:
@@ -152,6 +177,12 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
             on_leave = 0
         elif self.leave_stop.isChecked():
             on_leave = 1
+
+    def on_server_box_index_changed(self):
+        if self.server_box.currentIndex() == 0:
+            self.load_pixmap(icon_links[0])
+        elif self.server_box.currentIndex() == 1:
+            self.load_pixmap(icon_links[1])
 
 # Arguments and stuff
 def main():

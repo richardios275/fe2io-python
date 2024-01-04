@@ -29,7 +29,7 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="usernameLabel">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -259,7 +259,7 @@
     </property>
    </item>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="iconLabel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -271,6 +271,9 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
    <property name="frameShadow">
     <enum>QFrame::Plain</enum>
    </property>
@@ -281,7 +284,10 @@
     <string/>
    </property>
    <property name="scaledContents">
-    <bool>true</bool>
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
