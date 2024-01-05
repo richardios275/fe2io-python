@@ -94,17 +94,11 @@ class MyMainWindow(QtWidgets.QDialog, Ui_MainWindow):
         self.lineEdit.setText(args.username)
         self.volume_label.setText(f"Volume: {args.volume}%")
         self.volume_slider.setValue(args.volume)
+        self.server_box.setCurrentIndex(1 if args.server == 'lbio' else 0)
         set_volume(args.volume)
 
         # Automatically connect if --auto-connect argument is used
-        if len(args.auto_connect) > 0:
-            # Set server
-            if args.auto_connect == 'fe2io':
-                self.server_box.setCurrentIndex(0)
-            elif args.auto_connect == 'lbio':
-                self.server_box.setCurrentIndex(1)
-
-            #Press the button
+        if args.auto_connect == True:
             if len(args.username) > 0:
                 self.on_connect_button_clicked()
             else:
@@ -212,7 +206,8 @@ def main():
     parser = argparse.ArgumentParser(description="Use FE2.IO without a web browser!")
     parser.add_argument('-u', '--username', help='Set username on startup.', default='')
     parser.add_argument('-v', '--volume', help='Specify volume on startup. (0 - 100)', default=70, type=int)
-    parser.add_argument('--auto-connect', help='Automatically connect to server on launch (Options: fe2io / lbio). (Argument -u must be present)', default='')
+    parser.add_argument('-s', '--server', help='Specify which server to connect on startup. (Options: fe2io, lbio) Default: fe2io', default='fe2io')
+    parser.add_argument('--auto-connect', help='Automatically connect to server on launch. (Arguments -u, and -s must be set)', action='store_true')
 
     args = parser.parse_args()
     print(args)
