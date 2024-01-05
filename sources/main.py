@@ -207,7 +207,7 @@ def main():
     parser.add_argument('-u', '--username', help='Set username on startup.', default='')
     parser.add_argument('-v', '--volume', help='Specify volume on startup. (0 - 100)', default=70, type=int)
     parser.add_argument('-s', '--server', help='Specify which server to connect on startup. (Options: fe2io, lbio) Default: fe2io', default='fe2io')
-    parser.add_argument('--auto-connect', help='Automatically connect to server on launch. (Arguments -u, and -s must be set)', action='store_true')
+    parser.add_argument('--auto-connect', help='Automatically connect to server on launch. (Arguments -u)', action='store_true')
 
     args = parser.parse_args()
     print(args)
