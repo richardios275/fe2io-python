@@ -2,7 +2,7 @@
  FE2.IO RBX-2-Web Player Client recreated with Python and Qt
 
 ## Usage
-Just run the program! Duh.
+Just run the program! Duh.\
 Unless you want to get real fancy.
 
 ### Launch options
