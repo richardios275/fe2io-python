@@ -53,12 +53,17 @@ Download the latest release from the [Releases](https://github.com/richardios275
 
 1. Install Python: [Python Downloads](https://www.python.org/downloads/)
 2. Open a terminal or command prompt.
-3. Create a virtual environment:
+3. Clone the repo and cd into it
+    ```bash
+    git clone 'https://github.com/richardios275/fe2io-python.git'
+    cd ./fe2io-python
+    ```
+4. Create a virtual environment:
 
     ```bash
     python -m venv venv
     ```
-    Activate the virtual environment:
+5. Activate the virtual environment:
 
     On Windows:
 
@@ -73,7 +78,7 @@ Download the latest release from the [Releases](https://github.com/richardios275
         
         
 
-4. Install dependencies:
+6.  Install dependencies:
 
 ```bash
 pip install -r requirements.txt
