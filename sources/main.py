@@ -48,7 +48,10 @@ async def connect_ws(username, uri_option, status_label):
                             set_audio(data['audioUrl'])
                         if data['msgType'] == 'gameStatus':
                             if data['statusType'] == 'died':
-                                toggle_death_volume(on_death)
+                                if on_death == 1:
+                                    toggle_death_volume(True)
+                                elif on_death == 2:
+                                    toggle_leave()
                             elif data['statusType'] == 'left':
                                 if on_leave == 1:
                                     toggle_leave()
@@ -73,8 +76,10 @@ async def connect_ws(username, uri_option, status_label):
                         if data['status'] == 'ingame':
                             set_audio(data['bgm'], data['startUtcTime'])
                         if data['status'] == 'died':
-                            print('Player dead')
-                            toggle_death_volume(on_death)
+                            if on_death == 1:
+                                    toggle_death_volume(True)
+                            elif on_death == 2:
+                                toggle_leave()
                 except json.JSONDecodeError:
                     pass
 

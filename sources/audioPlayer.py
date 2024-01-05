@@ -31,13 +31,14 @@ try:
 except FileNotFoundError:
     audio_cache = {}
         
-def toggle_death_volume(enum):
+def toggle_death_volume(b):
     global deathVolume
-    if enum == 1:
+    if b == True:
         deathVolume = True
         set_volume(volume)
-    elif enum == 2:
-        mixer_music.stop()
+    else:
+        deathVolume = False
+        set_volume(volume)
 
 def toggle_leave():
     mixer_music.stop()
