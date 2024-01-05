@@ -6,7 +6,7 @@ Just run the program! Duh.\
 Unless you want to get real fancy.
 
 ### Launch options
-`-u` / `-username`: Specify Roblox username\
+`-u` / `--username`: Specify Roblox username\
 `-v` / `--volume`: Specify Player volume\
 `-s` / `--server`: Specify server (Options: `fe2io` / `lbio`)\
 `--autoconnect`: Automatically connect to server (`-u` needs to be specified)
