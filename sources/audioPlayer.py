@@ -15,6 +15,7 @@ VERY_BIG_NUMBER = 2147483647
 volume = 70
 deathVolume = False
 fadein = True
+debounce = False
 
 # Audio Stuff
 unsupported_formats = {"m4a"}
@@ -72,7 +73,13 @@ def convert_audio(file_path, output_dir):
     audio.export(output_dir, format='mp3')
 
 def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-milliseconds-of-silence.mp3', utc_time=0):
-    #Variables
+    # Check for debounce
+    global debounce
+    if debounce == True:
+        return
+    
+    # Variables
+    debounce = True
     current_time = datetime.now()
     download_failed = False
 
@@ -122,7 +129,7 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
             set_audio()
 
     #Play music
-    #If utc_time is present, then it'll wait until utc_time 
+    debounce = False
     if download_failed != True:
         mixer_music.load(filename)
 
