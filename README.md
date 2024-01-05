@@ -1,6 +1,39 @@
 # fe2io-python
  FE2.IO RBX-2-Web Player Client recreated with Python and Qt
 
+## Requirements
+This program relies on [ffmpeg](https://ffmpeg.org/) to convert audio of unsupported type ('m4a') to mp3.\
+Maps that uses m4a files for their music (Virulent Junkyard) **WILL** break the program without ffmpeg installed.
+
+Install ffmpeg with the following command:
+
+**Windows 11 (or 10 if [winget](https://github.com/microsoft/winget-cli) is installed):**
+```ps1
+winget install "FFmpeg (Essentials Build)"
+```
+**Windows (with [Chocolatey](https://community.chocolatey.org/))**
+```ps1
+choco install ffmpeg
+```
+**MacOS (with [brew](https://brew.sh/)):**
+```zsh
+brew install ffmpeg
+```
+**Linux Distros:**
+- **Ubuntu / Debian / Linux Mint / PopOS:**
+```bash
+sudo apt update
+sudo apt install ffmpeg
+```
+- **Fedora / Other RHEL Distributions**
+```bash
+sudo dnf install ffmpeg
+```
+- **Arch / Manjaro / Endeavour / SteamOS**
+```bash
+sudo pacman -Sy ffmpeg
+```
+
 ## Usage
 Just run the program! Duh.\
 Unless you want to get real fancy.
