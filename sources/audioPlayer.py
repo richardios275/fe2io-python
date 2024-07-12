@@ -55,21 +55,6 @@ def set_volume(vol):
         vol = vol / 2
     mixer_music.set_volume(vol / 100)
 
-def get_file_extension(url):
-    # Parse the URL to get the path
-    path = urlparse(url).path
-    # Split the path based on '/'
-    parts = path.split('/')
-    # Get the last part of the path, which represents the file name
-    file_name = parts[-1]
-    # Split the file name based on '?' to handle parameters
-    file_name_parts = file_name.split('?')
-    # Get the first part of the file name, which represents the actual file name
-    actual_file_name = file_name_parts[0]
-    # Split the actual file name based on '.', and get the last part, which represents the file extension
-    extension = actual_file_name.split('.')[-1]
-    return extension
-
 def convert_audio(file_path, output_dir):
     audio = AudioSegment.from_file(file_path)
     audio.export(output_dir, format='mp3')
@@ -110,7 +95,7 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
                 print('File is not valid!')
                 set_audio()
 
-            # Update file extension variable with true file type
+            # Get the file extension of the audio
             ext = kind.extension
 
             # Convert the file to mp3 if it downloads an unsupported file format
