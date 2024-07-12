@@ -3,3 +3,4 @@ websockets
 requests
 pygame
 pydub
+filetype

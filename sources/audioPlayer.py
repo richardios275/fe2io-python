@@ -3,6 +3,7 @@ import json
 import requests
 import pygame
 import tempfile
+import filetype
 from datetime import datetime
 from pygame import mixer_music
 from pydub import AudioSegment
@@ -18,7 +19,7 @@ fadein = True
 debounce = False
 
 # Audio Stuff
-unsupported_formats = {"m4a"}
+unsupported_formats = {"mp4"}
 audio_cache = {}
 filename = ""
 audio_folder = "fe2io_files"
@@ -103,8 +104,14 @@ def set_audio(url='https://github.com/anars/blank-audio/blob/master/250-millisec
             response = requests.get(url)
             response.raise_for_status()
 
-            # Get the file extension of the audio
-            ext = get_file_extension(url)
+            # Get the file kind of the audio
+            kind = filetype.guess(response.content)
+            if kind is None:
+                print('File is not valid!')
+                set_audio()
+
+            # Update file extension variable with true file type
+            ext = kind.extension
 
             # Convert the file to mp3 if it downloads an unsupported file format
             if ext in unsupported_formats:
