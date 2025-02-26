@@ -1,3 +1,7 @@
+# Repo Archived
+I have no intention of continuing support for this project as of now, and I don't want to leave issues piling up, so ye.
+If you want to pick it up, you're free to do so.
+
 # fe2io-python
  FE2.IO RBX-2-Web Player Client recreated with Python and Qt
 
